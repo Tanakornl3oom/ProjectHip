@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
-  <link rel="stylesheet" href="firstPage.css" type="text/css">
+  <link rel="stylesheet" href="/stylesheets/firstPage.css" type="text/css">
   <title>MapTelling4.0</title>
   <style>
 
@@ -13,7 +13,7 @@
 </head>
 
 <body class="bg-light">
-  <div class="w-100" style="background-image: url(&quot;23825826_1681675015197896_1304821862_o.jpg&quot;);">
+  <div class="w-100" style="background-image: url(&quot;/images/23825826_1681675015197896_1304821862_o.jpg&quot;);">
     <div class="container py-5">
       <div class="row">
         <div class="col-md-9 text-white align-self-center">
@@ -35,19 +35,24 @@
           <div class="card">
             <div class="card-body p-5">
               <h3 class="pb-3">Information</h3>
-              <form action="https://formspree.io/YOUREMAILHERE">
+              <form  method="POST" action="/login" id = "loginform">
                 <div class="form-group"> <label>ชื่อ - นามสกุล</label>
-                  <input class="form-control" placeholder="ณัฐนนท์ หล่อสุดๆ" required=""> </div>
+                  <input id="name" class="form-control" placeholder="ณัฐนนท์ หล่อสุดๆ" required> 
+                </div>
                 <div class="form-group"> <label>คณะ</label>
-                  <input class="form-control" placeholder="วิทยาศาสตร์-คอมพิวเตอร์" required=""> </div>
-                <div class="form-group"> <select name="option" class="styled-select slate">
-  								<option value="" disabled="" selected="">ชั้นปีที่</option>
-  								<option value="1">ปี 1</option>
-  								<option value="2">ปี 2</option>
-  								<option value="3">ปี 3</option>
-                  <option value="3">ปี 4</option>
-								</select> </div>
-                <a class="btn btn-primary" href="">Confirm </a>
+                  <input id="faculty" class="form-control" placeholder="วิทยาศาสตร์-คอมพิวเตอร์" required> 
+                </div>
+                <div class="form-group"> 
+                  <select id="option" name="option" class="styled-select slate" required>
+                    <option value="" disabled="" selected="">ชั้นปีที่</option>
+                    <option value="1">ปี 1</option>
+                    <option value="2">ปี 2</option>
+                    <option value="3">ปี 3</option>
+                    <option value="3">ปี 4</option>
+                  </select> 
+                </div>
+                <input id="login" type="submit" class="btn btn-primary" value ="Confirm">
+               <!--<p style="color:white;"> <a type="submit" id="confirm" class="btn btn-primary">Confirm</a></p>-->
               </form>
             </div>
           </div>
@@ -58,6 +63,43 @@
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </body>
 
 </html>
+
+<script>
+  $(function(){
+
+    var frm = $('#loginform');
+
+    frm.submit(function (ev) {
+          ev.preventDefault();
+            var name    = $('#name').val();
+            var faculty = $('#faculty').val();
+            var option  = $('#option').val()
+
+            var formData = { name: name, faculty: faculty,option : option };
+
+          $.ajax({
+              url: frm.attr('action'),
+              type: frm.attr('method'),
+              data:  formData,
+              success: function (success) {
+                if(success){
+                  swal(name+ "เข้าสู่การทดลอง"," ", "success").then(() => {
+                    window.location = '/information-trial1';
+                  });
+                }else{
+                  swal( 'มีข้อผิดพลาด',' ','error' ).then(() => {
+                    window.location.reload();
+                  });
+                  
+                }
+              } 
+          });
+    })
+  });
+</script>
