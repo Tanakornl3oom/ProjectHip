@@ -1,5 +1,5 @@
 let google = require('googleapis');
-let authentication = require("./authentication");
+let authentication = require("./Authentication.js");
 
 
 // authentication.authenticate().then((auth)=>{
@@ -8,23 +8,15 @@ let authentication = require("./authentication");
 
 // const spreadsheetId = '1p3a80RSb-q8bhZ1rS2inQtle5eYAr62JL7YPC5em868';
 // const sheet = 'Sheet1!';
-const spreadsheetId = '1I9BvHPQlxsIAVxBZWXqAry0Fdu0tePcttAiJ2gR8FRY';
-const sheet = 'Testing!';
-const range = sheet+'A2:M';
+const spreadsheetId = '1ZZQtDayIbAH65jJkbEM70THGBGeAoDH_Rx3wReW_U0A';
+const sheet = 'sheets1!';
+const range = sheet+'A2:F';
 const sheets = google.sheets('v4');
 
 const valueInputOption = "RAW";
 
 exports.submit = (values, callback) => {
     authentication.authenticate().then((auth) => {
-        // var values = [
-        //     [
-        //         "วิทยาศาสตร์",
-        //         "20",
-        //         "ชาย"
-        //     ]
-        // // Additional rows ...
-        // ];
         var body = {
             values: values
         };
@@ -38,10 +30,10 @@ exports.submit = (values, callback) => {
             if(err) {
                 // Handle error
                 console.log(err);
-                callback(true);
+                callback(false);
             } else {
                 console.log('%d cells appended.', result.updates.updatedCells);
-                callback(false);
+                callback(true);
             }
         });
     });

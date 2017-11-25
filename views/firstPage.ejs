@@ -52,7 +52,6 @@
                   </select> 
                 </div>
                 <input id="login" type="submit" class="btn btn-primary" value ="Confirm">
-               <!--<p style="color:white;"> <a type="submit" id="confirm" class="btn btn-primary">Confirm</a></p>-->
               </form>
             </div>
           </div>
@@ -89,11 +88,11 @@
               data:  formData,
               success: function (success) {
                 if(success){
-                  swal(name+ "เข้าสู่การทดลอง"," ", "success").then(() => {
+                  swal("คุณ "+name+ " เชิญเข้าสู่การทดลอง"," ", "success").then(() => {
                     window.location = '/information-trial1';
                   });
                 }else{
-                  swal( 'มีข้อผิดพลาด',' ','error' ).then(() => {
+                  swal('มีข้อผิดพลาด',' ','error' ).then(() => {
                     window.location.reload();
                   });
                   
