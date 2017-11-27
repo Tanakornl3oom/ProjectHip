@@ -56,10 +56,10 @@ exports.getindex = (callback) => {
       } else {
         
         for (var i = 0; rows.length; i++) {
-        console.log("index"+i);
+        // console.log("index"+i);
           
           var row = rows[i];
-          console.log(row);
+        //   console.log(row);
           if(row === undefined){
             var data = i;
             callback(null, data);
