@@ -77,6 +77,8 @@ router.post('/answercorrect', function(req, res, next) {
 
     req.session.answer1 = req.body.answer1;
     req.session.answer2 = req.body.answer2;
+    req.session.time1 = req.body.time1;
+    req.session.time2 = req.body.time2;
     
 
     res.send(true);
@@ -87,6 +89,8 @@ router.post('/answercorrect', function(req, res, next) {
 router.post('/confirm', function(req, res, next) {
 
     req.session.answer3 = req.body.answer;
+    req.session.time3 = req.body.time3;
+    
     var pic=""
     if(req.session.index%2){
       pic= "รูปแผนที่ถูก"
@@ -99,10 +103,12 @@ router.post('/confirm', function(req, res, next) {
         req.session.faculty,
         req.session.option,
         req.session.answer1,
+        req.session.time1,
         req.session.answer2,
+        req.session.time2,
         req.session.answer3,
+        req.session.time3,
         pic
-        
     ]]
     
 

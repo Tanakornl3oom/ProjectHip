@@ -10,7 +10,7 @@ let authentication = require("./Authentication.js");
 // const sheet = 'Sheet1!';
 const spreadsheetId = '1ZZQtDayIbAH65jJkbEM70THGBGeAoDH_Rx3wReW_U0A';
 const sheet = 'sheets1!';
-const range = sheet+'A2:G';
+const range = sheet+'A2:J';
 const sheets = google.sheets('v4');
 
 const valueInputOption = "RAW";
@@ -43,7 +43,7 @@ exports.getindex = (callback) => {
     sheets.spreadsheets.values.get({
       auth: auth,
       spreadsheetId: spreadsheetId,
-      range: sheet+'A:G', 
+      range: sheet+'A:J', 
     }, (err, response) => {
       if (err) {
         console.log('The API returned an error: ' + err);

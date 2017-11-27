@@ -9,7 +9,7 @@
   <style>
     #div1 {
       position: absolute;
-      top: 84%;
+      top: 71%;
       left: 10%;
       float: left;
       width: 80px;
@@ -19,7 +19,7 @@
 
     #div2 {
       position: absolute;
-      top: 63%;
+      top: 30%;
       left: 9%;
       float: left;
       width: 80px;
@@ -39,7 +39,7 @@
 
     #div4 {
       position: absolute;
-      top: 70%;
+      top: 43%;
       left: 33%;
       float: left;
       width: 80px;
@@ -59,7 +59,7 @@
 
     #div6 {
       position: absolute;
-      top: 70%;
+      top: 43%;
       left: 70%;
       float: left;
       width: 80px;
@@ -88,7 +88,7 @@ function drop(ev) {
   </script>
 </head>
 
-<body class="bg-info">
+<body class="bg-light">
   <div class="w-100" style="background-image: url(&quot;/images/23798477_1682366181795446_1316892254_o.jpg&quot;);">
     <div class="container py-5">
       <div class="row">
@@ -106,11 +106,13 @@ function drop(ev) {
       <div  class="row">
         <div class="col-md-12">
           <div id="imgex">
+            <p id="demo" align="right" style="font-size:20px"></p>
             <img class="img-fluid d-block mx-auto img-thumbnail" src="/images/map.jpg" width="1200">
             <div class="py-3 text-center">
               <a id="ready"class="btn w-25 btn-primary"  style="color: white;">I'm ready </a>
             </div>
           </div>
+          <p id="demo1" align="right" style="font-size:20px"></p>
           <div id="ex">
             <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)" style="border-style: solid; border-width: 5px;">
               <img class="img-fluid d-block" src="/images/clear.png" width="80" id="dragg1" ondragstart="drag(event)"> </div>
@@ -159,20 +161,52 @@ function drop(ev) {
         $('#confirm').hide();
         $('#ex').hide();
 
+        var time = 30;
+        var myVar = setInterval(function(){ myTimer() }, 1000);
+
+        function myTimer() {
+            time-=1;
+            document.getElementById("demo").innerHTML = time;
+            if(time  == 0){
+              clearInterval(myVar);
+              $("#demo").hide();
+
+              $('#imgex').hide();
+              $('#ready').hide();
+
+              $('#ex').show();
+              $('#test').show();
+              $('#confirm').show();
+              myStartFunction1();              
+            }
+        }
+
+        var time1 = 0;
+         function myStartFunction1() {
+           myVar1 = setInterval(function(){ myTimer1() }, 1000);
+           
+        }
+        function myTimer1() {
+            time1+=1;
+            document.getElementById("demo1").innerHTML = time1;
+        }
+
         $('#ready').click(function(){
-          
-          $('#imgex').hide();
-          $('#ready').hide();
+            clearInterval(myVar);
+              $("#demo").hide();
 
-          $('#ex').show();
-          $('#test').show();
-          $('#confirm').show();
-          
+              $('#imgex').hide();
+              $('#ready').hide();
 
+              $('#ex').show();
+              $('#test').show();
+              $('#confirm').show();
+              myStartFunction1();
         })
 
         $('#confirmbtn').click(function(){
 
+          $('#confirmbtn').hide();
           var answer = '';
           
           var sol1 = $('#div1 img').attr('src') ,
@@ -190,12 +224,14 @@ function drop(ev) {
                 answer = "ผิด";
           }
 
+          time3 = time1+"s";
+
           var frm = $('#confirmform');
 
           frm.submit(function (ev) {
           ev.preventDefault();
            
-          var formData = { answer : answer };
+          var formData = { answer : answer , time3 : time3 };
 
           $.ajax({
               url: frm.attr('action'),
