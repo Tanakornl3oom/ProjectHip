@@ -7,35 +7,84 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
   <link rel="stylesheet" href="https://pingendo.com/assets/bootstrap/bootstrap-4.0.0-beta.1.css" type="text/css">
   <style>
-    #div2,
-    #div3,
-    #div1,
-    #div4 {
+    #div1 {
+      position: absolute;
+      top: 84%;
+      left: 10%;
       float: left;
-      width: 400px;
-      height: 300px;
-      margin: 10px;
-      padding: 10px;
+      width: 80px;
+      height: 80px;
+      border: 1px solid black;
+    }
+
+    #div2 {
+      position: absolute;
+      top: 63%;
+      left: 9%;
+      float: left;
+      width: 80px;
+      height: 80px;
+      border: 1px solid black;
+    }
+
+    #div3 {
+      position: absolute;
+      top: 53%;
+      left: 55%;
+      float: left;
+      width: 80px;
+      height: 80px;
+      border: 1px solid black;
+    }
+
+    #div4 {
+      position: absolute;
+      top: 70%;
+      left: 33%;
+      float: left;
+      width: 80px;
+      height: 80px;
+      border: 1px solid black;
+    }
+
+    #div5 {
+      position: absolute;
+      top: 80%;
+      left: 54%;
+      float: left;
+      width: 80px;
+      height: 80px;
+      border: 1px solid black;
+    }
+
+    #div6 {
+      position: absolute;
+      top: 70%;
+      left: 70%;
+      float: left;
+      width: 80px;
+      height: 80px;
       border: 1px solid black;
     }
   </style>
   <script>
-    function allowDrop(ev) 
-        {
-        	ev.preventDefault();
-    		}
-    
-    		function drag(ev) 
-        {
-        	ev.dataTransfer.setData("text", ev.target.id);
-    		}
-    
-    		function drop(ev) 
-        {
-        	ev.preventDefault();
-        	var data = ev.dataTransfer.getData("text");
-        	ev.target.appendChild(document.getElementById(data));
-    		}
+    function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+function drag(ev) {
+    ev.dataTransfer.setData("src", ev.target.id);
+}
+
+function drop(ev) {
+    ev.preventDefault();
+    var src = document.getElementById(ev.dataTransfer.getData("src"));
+    var srcParent = src.parentNode;
+    var tgt = ev.currentTarget.firstElementChild;
+
+    ev.currentTarget.replaceChild(src, tgt);
+    srcParent.appendChild(tgt);
+}
   </script>
 </head>
 
@@ -45,7 +94,7 @@
       <div class="row">
         <div class="col-md-12">
           <a class="nav-link text-right"><i class="fa d-inline fa-lg fa-user" style="color: white;"></i>
-            <font color="white">ณัฐนนท์ หล่อสุดๆ</font>
+            <font color="white"><%= name%></font>
           </a>
           <h1 class="text-white">MapTelling4.0</h1>
         </div>
@@ -54,25 +103,122 @@
   </div>
   <div class="py-5">
     <div class="container">
-      <div class="row">
+      <div  class="row">
         <div class="col-md-12">
-          <img class="img-fluid d-block mx-auto img-thumbnail" src="/images/my-little-pony-19469-19960-hd-wallpapers.jpg" width="500">
-          <div class="py-3 text-center">
-            <a class="btn w-25 btn-primary" href="">I'm ready </a>
+          <div id="imgex">
+            <img class="img-fluid d-block mx-auto img-thumbnail" src="/images/map.jpg" width="1200">
+            <div class="py-3 text-center">
+              <a id="ready"class="btn w-25 btn-primary"  style="color: white;">I'm ready </a>
+            </div>
           </div>
+          <div id="ex">
+            <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)" style="border-style: solid; border-width: 5px;">
+              <img class="img-fluid d-block" src="/images/clear.png" width="80" id="dragg1" ondragstart="drag(event)"> </div>
+            <div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)" style="border-style: solid; border-width: 5px;">
+              <img class="img-fluid d-block" src="/images/clear.png" width="80" id="dragg2" ondragstart="drag(event)"> </div>
+            <div id="div4" ondrop="drop(event)" ondragover="allowDrop(event)" style="border-style: solid; border-width: 5px;">
+              <img class="img-fluid d-block" src="/images/clear.png" width="80" id="dragg4" ondragstart="drag(event)"> </div>
+            <div id="div6" ondrop="drop(event)" ondragover="allowDrop(event)" style="border-style: solid; border-width: 5px;">
+              <img class="img-fluid d-block" src="/images/clear.png" width="80" id="dragg6" ondragstart="drag(event)"> </div>
+            <img id="sol"class="img-fluid d-block py-3" src="/images/map1.jpg"> </div>
         </div>
       </div>
+      <div id="test" class="row" >
+        <div class="col-md-2" ondragover="allowDrop(event)" ondrop="drop(event)" align="center">
+          <img class="img-fluid d-block" src="/images/obj1.png" width="80" id="drag2" ondragstart="drag(event)" height=""> </div>
+        <div class="col-md-2" ondragover="allowDrop(event)" ondrop="drop(event)" align="center">
+          <img class="img-fluid d-block" src="/images/obj2.png" width="80" ondragstart="drag(event)" id="drag1"> </div>
+        <div class="col-md-2" ondragover="allowDrop(event)" ondrop="drop(event)" align="center">
+          <img id="drag3" class="img-fluid d-block" src="/images/obj3.png" width="80" ondragstart="drag(event)"> </div>
+        <div class="col-md-2" ondragover="allowDrop(event)" ondrop="drop(event)" align="center">
+          <img class="img-fluid d-block" src="/images/obj4.png" width="80" id="drag4" ondragstart="drag(event)"> </div>
+        <div class="col-md-2" ondragover="allowDrop(event)" ondrop="drop(event)" align="center">
+          <img class="img-fluid d-block" src="/images/obj5.png" width="80" id="drag5" ondragstart="drag(event)" height=""> </div>
+        <div class="col-md-2" ondragover="allowDrop(event)" ondrop="drop(event)" align="center">
+          <img class="img-fluid d-block" src="/images/obj6.png" width="80" id="drag6" ondragstart="drag(event)"> </div>
+      </div>
+      <form  method="POST" action="/confirm" id = "confirmform">
+        <div  id="confirm"class="py-3 text-center">
+          <a><input type="submit" id="confirmbtn" class="btn w-25 btn-primary"  style="color: white;" value="Confirm"></a>
+        </div>
+      </form>
     </div>
   </div>
-  <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-  <div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-  <div id="div3" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-  <div id="div4" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-  <img src="/images/23825826_1681675015197896_1304821862_o.jpg" ondragstart="drag(event)" id="drag1" width="300" height="200">
-  <img src="/images/my_little_pony_banner_by_alexs_doodles-d3yq121.jpg" ondragstart="drag(event)" id="drag2" width="300" height="200">
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </body>
+
+<script>
+
+    $(function(){
+        $('#test').hide();
+        $('#confirm').hide();
+        $('#ex').hide();
+
+        $('#ready').click(function(){
+          
+          $('#imgex').hide();
+          $('#ready').hide();
+
+          $('#ex').show();
+          $('#test').show();
+          $('#confirm').show();
+          
+
+        })
+
+        $('#confirmbtn').click(function(){
+
+          var answer = '';
+          
+          var sol1 = $('#div1 img').attr('src') ,
+              sol2 = $('#div2 img').attr('src') ,
+              sol3 = $('#div4 img').attr('src') ,
+              sol4 = $('#div6 img').attr('src') 
+
+
+          if(sol1 === '/images/obj1.png' && sol2 === '/images/obj2.png' &&
+              sol3 === '/images/obj3.png'  && sol4 === '/images/obj4.png' ){
+
+                answer = "ถูก";
+          } 
+          else{
+                answer = "ผิด";
+          }
+
+          var frm = $('#confirmform');
+
+          frm.submit(function (ev) {
+          ev.preventDefault();
+           
+          var formData = { answer : answer };
+
+          $.ajax({
+              url: frm.attr('action'),
+              type: frm.attr('method'),
+              data:  formData,
+              success: function (success) {
+                if(success){
+                  swal("ขอบคุณครับ"," ", "success").then(() => {
+                    window.location = '/';
+                  });
+                }else{
+                  swal('มีข้อผิดพลาด',' ','error' ).then(() => {
+                    window.location.reload();
+                  });
+                }
+              } 
+          });
+          })
+          
+        })
+      
+    })
+
+</script>
 
 </html>

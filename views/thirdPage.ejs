@@ -34,7 +34,6 @@
       display: block;
       width: 50%;
     }
-   
   </style>
 </head>
 
@@ -60,93 +59,351 @@
 				<source src="https://a.tumblr.com/tumblr_o6i4uxxKqC1sxiavio1.mp3">
 			</audio> </div>
   </div>
-  <div class="col-md-12 text-center">
-    <a class="btn w-25 btn-primary" href="/information-trail1">Back </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <a id="ready"class="btn w-25 btn-primary" style="color : white">I'm ready </a>
+  <div id="ready" class="col-md-12 text-center">
+    <a class="btn w-25 btn-primary" href="/">Back </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a id="readybtn" class="btn w-25 btn-primary" style="color:white" >I'm ready </a>
   </div>
-  <div  id = "no1"class="col-md-12 py-5">
+  <% if(index%2) {%>
+  <div id="correct1" class="col-md-12 py-5">
     <div class="card">
       <div class="card-header bg-primary">
-        <h3 class="text-white">1. รูปแผนที่นี้ตรงกับในหัวหรือไม่</h3>
+        <h3 class="text-white">1. รูปแผนที่นี้ตรงกับในหัวหรือไม่ - ถูก</h3>
       </div>
       <div class="card-body">
-        <img class="img-fluid d-block mx-auto" src="CSCAMP32/pirates-jack-sparrow.jpg" width="500">
+        <img class="img-fluid d-block mx-auto border border-dark" src="/images/map_correct.jpg" width="1000">
         <div class="col-md-12 text-center py-3">
-          <a id="yesbtn1" class="btn w-25 btn-primary" style="color : white" >Yes </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <a id="nobtn1" class="btn w-25 btn-primary"style="color : white" >No </a>
+          <a id="answer1btn" class="btn w-25 btn-primary" style="color:white">Yes </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <a id="correct1btn" class="btn w-25 btn-primary" style="color:white" >No </a>
         </div>
       </div>
     </div>
   </div>
-  <div id="no2" class="col-md-12 py-5">
+    <div id="correct2" class="col-md-12 py-5">
     <div class="card">
       <div class="card-header bg-primary">
-        <h3 class="text-white">2. อะไรที่ไม่ตรงกับภาพที่คิดไว้</h3>
+        <h3 class="text-white">2. อะไรที่ไม่ตรงกับภาพที่คิดไว้ - ผิด</h3>
       </div>
       <div class="card-body">
-        <img class="img-fluid d-block mx-auto" src="CSCAMP32/pirates-jack-sparrow.jpg" width="500">
+        <img class="img-fluid d-block mx-auto border border-dark" src="/images/map_correct.jpg" width="1000">
         <div class="col-md-12 text-center py-3">
-          <a id="nobtn2" class="btn w-25 btn-primary"style="color : white" >Object1 </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <a id="yesbtn2" class="btn w-25 btn-primary"style="color : white" >Object2 </a>
+          <a id ="correct2btn" class="btn w-25 btn-primary" >
+            <img class="img-fluid d-block mx-auto" src="/images/obw1.png" width="120"> </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <a id ="correct3btn" class="btn w-25 btn-primary" >
+            <img class="img-fluid d-block mx-auto border border-dark" src="/images/obw2.png" width="50"> </a>
         </div>
         <div class="col-md-12 text-center">
-          <a id="nobtn2" class="btn w-25 btn-primary" style="color : white">Object3 </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <a id="nobtn2" class="btn w-25 btn-primary" style="color : white">Object4 </a>
+          <a id ="correct4btn"  class="btn w-25 btn-primary" >
+            <img class="img-fluid d-block mx-auto" src="/images/obw3.png" width="120"> </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <a id ="correct5btn" class="btn w-25 btn-primary" >
+            <img class="img-fluid d-block mx-auto" src="/images/obw4.png" width="150"> </a>
         </div>
       </div>
     </div>
   </div>
-
-  
-  
-
+  <% }else { %>
+  <div id="wrong1" class="col-md-12 py-5">
+    <div class="card">
+      <div class="card-header bg-primary">
+        <h3 class="text-white">1. รูปแผนที่นี้ตรงกับในหัวหรือไม่ - ผิด</h3>
+      </div>
+      <div class="card-body">
+        <img class="img-fluid d-block mx-auto border border-dark" src="/images/map_wrong.jpg" width="1000">
+        <div class="col-md-12 text-center py-3">
+          <a id="wrong1btn" class="btn w-25 btn-primary" style="color:white">Yes </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <a id="wrong2btn" class="btn w-25 btn-primary" style="color:white" >No </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="wrong2"  class="col-md-12 py-5">
+    <div class="card">
+      <div class="card-header bg-primary">
+        <h3 class="text-white">2. อะไรที่ไม่ตรงกับภาพที่คิดไว้ - ผิด</h3>
+      </div>
+      <div class="card-body">
+        <img class="img-fluid d-block mx-auto border border-dark" src="/images/map_wrong.jpg" width="1000">
+        <div class="col-md-12 text-center py-3">
+          <a id="wrong3btn" class="btn w-25 btn-primary">
+            <img class="img-fluid d-block mx-auto" src="/images/obw1.png" width="120"> </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <a id="wrong4btn" class="btn w-25 btn-primary" >
+            <img class="img-fluid d-block mx-auto border border-dark" src="/images/obw2.png" width="50"> </a>
+        </div>
+        <div class="col-md-12 text-center">
+          <a id="wrong5btn" class="btn w-25 btn-primary" >
+            <img class="img-fluid d-block mx-auto" src="/images/obw3.png" width="120"> </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <aid="wrong6btn"  class="btn w-25 btn-primary">
+            <img class="img-fluid d-block mx-auto" src="/images/obw4.png" width="150"> </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% } %>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-</body>
 
+</body>
 <script>
      $(function(){
-        $('#no1').hide();
-        $('#no2').hide();
-        $('#nextbtn').hide();
+       
+       var answer1 = ""
+       var answer2 = ""
+        $('#wrong1').hide();
+        $('#wrong2').hide();
 
+        $('#correct1').hide();
+        $('#correct2').hide();
+       
 
-
-        $('#ready').click(function(){
-            $('#no1').show();
-            $('#ready').addClass('disabled');
-        })
-
-        $('#yesbtn1').click(function(){
-            $('#no1').hide();
+        $('#readybtn').click(function(){
             
-            //sent answer   next show
-
-
+            $('#correct1').show();
+            $('#wrong1').show();
+            $('#readybtn').addClass('disabled');
         })
 
-        $('#nobtn1').click(function(){
-            $('#no1').hide();
-            $('#no2').show();
+        //correct pic
+
+        $('#answer1btn').click(function(){
             
+        answer1 = "ถูก"
+        answer2 = ""
+         $.ajax({
+                url: '/answercorrect',
+                type:'POST',
+                data: {answer1 : answer1, answer2 :answer2},
+                success: function (success) {
+                  if(success){
+                    swal("ไปสู่การทดลอง2"," ", "success").then(() => {
+                      window.location = '/information-trial2';
+                    });
+                  }else{
+                    swal('มีข้อผิดพลาด',' ','error' ).then(() => {
+                      window.location.reload();
+                    });
+                  }
+                }
+            });
+      });
+
+      $('#correct1btn').click(function(){
             
-            //sent answer   
+        answer1 = "ผิด"
+         $('#correct1').hide();
+         $('#correct2').show();
+         
 
+      }); 
 
-        })
+       $('#correct2btn').click(function(){
+            
+        answer2 = "ผิด"
 
-        $('#yesbtn2').click(function(){
-            window.location.href = "/information-trial2";
-        })
+         $.ajax({
+                url: '/answercorrect',
+                type:'POST',
+                data: {answer1 : answer1, answer2 :answer2},
+                success: function (success) {
+                  if(success){
+                    swal("ไปสู่การทดลอง2"," ", "success").then(() => {
+                      window.location = '/information-trial2';
+                    });
+                  }else{
+                    swal('มีข้อผิดพลาด',' ','error' ).then(() => {
+                      window.location.reload();
+                    });
+                  }
+                }
+            });
+      });
+      $('#correct3btn').click(function(){
+            
+        answer2 = "ผิด"
 
-         $('#nobtn2').click(function(){
-            window.location.href = "/information-trial2";
-        })
+         $.ajax({
+                url: '/answercorrect',
+                type:'POST',
+                data: {answer1 : answer1, answer2 :answer2},
+                success: function (success) {
+                  if(success){
+                    swal("ไปสู่การทดลอง2"," ", "success").then(() => {
+                      window.location = '/information-trial2';
+                    });
+                  }else{
+                    swal('มีข้อผิดพลาด',' ','error' ).then(() => {
+                      window.location.reload();
+                    });
+                  }
+                }
+            });
+      });
+      $('#correct4btn').click(function(){
+            
+        answer2 = "ผิด"
 
+         $.ajax({
+                url: '/answercorrect',
+                type:'POST',
+                data: {answer1 : answer1, answer2 :answer2},
+                success: function (success) {
+                  if(success){
+                    swal("ไปสู่การทดลอง2"," ", "success").then(() => {
+                      window.location = '/information-trial2';
+                    });
+                  }else{
+                    swal('มีข้อผิดพลาด',' ','error' ).then(() => {
+                      window.location.reload();
+                    });
+                  }
+                }
+            });
+      });
+      $('#correct5btn').click(function(){
+            
+        answer2 = "ผิด"
+
+         $.ajax({
+                url: '/answercorrect',
+                type:'POST',
+                data: {answer1 : answer1, answer2 :answer2},
+                success: function (success) {
+                  if(success){
+                    swal("ไปสู่การทดลอง2"," ", "success").then(() => {
+                      window.location = '/information-trial2';
+                    });
+                  }else{
+                    swal('มีข้อผิดพลาด',' ','error' ).then(() => {
+                      window.location.reload();
+                    });
+                  }
+                }
+            });
+      });
+
+       
+      //wrong pic
+
+      $('#wrong1btn').click(function(){
+            
+        answer1 = "ผิด"
+        answer2 = " "
+         $('#wrong1').hide();
+         $('#wrong2').show();
+
+         $.ajax({
+                url: '/answercorrect',
+                type:'POST',
+                data: {answer1 : answer1, answer2 :answer2},
+                success: function (success) {
+                  if(success){
+                    swal("ไปสู่การทดลอง2"," ", "success").then(() => {
+                      window.location = '/information-trial2';
+                    });
+                  }else{
+                    swal('มีข้อผิดพลาด',' ','error' ).then(() => {
+                      window.location.reload();
+                    });
+                  }
+                }
+            });
+      });
+
+      $('#wrong2btn').click(function(){
+            
+        answer1 = "ถูก"
+         $('#wrong1').hide();
+         $('#wrong2').show();
+         
+
+      }); 
+
+       $('#wrong3btn').click(function(){
+            
+        answer2 = "ผิด"
+
+         $.ajax({
+                url: '/answercorrect',
+                type:'POST',
+                data: {answer1 : answer1, answer2 :answer2},
+                success: function (success) {
+                  if(success){
+                    swal("ไปสู่การทดลอง2"," ", "success").then(() => {
+                      window.location = '/information-trial2';
+                    });
+                  }else{
+                    swal('มีข้อผิดพลาด',' ','error' ).then(() => {
+                      window.location.reload();
+                    });
+                  }
+                }
+            });
+      });
+      $('#wrong4btn').click(function(){
+            
+        answer2 = "ผิด"
+
+         $.ajax({
+                url: '/answercorrect',
+                type:'POST',
+                data: {answer1 : answer1, answer2 :answer2},
+                success: function (success) {
+                  if(success){
+                    swal("ไปสู่การทดลอง2"," ", "success").then(() => {
+                      window.location = '/information-trial2';
+                    });
+                  }else{
+                    swal('มีข้อผิดพลาด',' ','error' ).then(() => {
+                      window.location.reload();
+                    });
+                  }
+                }
+            });
+      });
+      $('#wrong5btn').click(function(){
+            
+        answer2 = "ถูก"
+
+         $.ajax({
+                url: '/answercorrect',
+                type:'POST',
+                data: {answer1 : answer1, answer2 :answer2},
+                success: function (success) {
+                  if(success){
+                    swal("ไปสู่การทดลอง2"," ", "success").then(() => {
+                      window.location = '/information-trial2';
+                    });
+                  }else{
+                    swal('มีข้อผิดพลาด',' ','error' ).then(() => {
+                      window.location.reload();
+                    });
+                  }
+                }
+            });
+      });
+      $('#wrong6btn').click(function(){
+            
+        answer2 = "ผิด"
+
+         $.ajax({
+                url: '/answercorrect',
+                type:'POST',
+                data: {answer1 : answer1, answer2 :answer2},
+                success: function (success) {
+                  if(success){
+                    swal("ไปสู่การทดลอง2"," ", "success").then(() => {
+                      window.location = '/information-trial2';
+                    });
+                  }else{
+                    swal('มีข้อผิดพลาด',' ','error' ).then(() => {
+                      window.location.reload();
+                    });
+                  }
+                }
+            });
+      });
 
 
 
@@ -155,5 +412,4 @@
     });
 
 </script>
-
 </html>
